@@ -40,18 +40,18 @@ const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     >
       <Toolbar sx={{ justifyContent: "space-between" }}>
         {/* LEFT SIDE */}
-       
-          <FlexBetween
-            backgroundColor={theme.palette.background.alt}
-            borderRadius="9px"
-            gap="1rem"
-            p="0.1rem 1.5rem"
-          >
-            <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search..." />
-            <IconButton type="button" sx={{ p: 1 }}>
-              <Search />
-            </IconButton>
-          </FlexBetween>
+      
+        <FlexBetween
+          backgroundColor="#064F90"
+          borderRadius="3px"
+          // gap="3rem"
+          p=".1rem 1rem"
+        >
+          <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search..." />
+          <IconButton type="button" sx={{ p: 2 }}>
+            <Search />
+          </IconButton>
+        </FlexBetween>
 
         {/* RIGHT SIDE */}
         <FlexBetween gap="1.5rem">

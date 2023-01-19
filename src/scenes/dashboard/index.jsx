@@ -1,27 +1,40 @@
-import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
-import { tokens } from "../../theme";
-// import { mockTransactions } from "../../data/mockData";
-// import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-// import EmailIcon from "@mui/icons-material/Email";
-// import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
-// import PersonAddIcon from "@mui/icons-material/PersonAdd";
-// import TrafficIcon from "@mui/icons-material/Traffic";
+import React, { useState, useEffect } from "react";
+import { Box, Typography, useTheme } from "@mui/material";
 import Header from "../../components/Header";
-// import LineChart from "../../components/LineChart";
-// import GeographyChart from "../../components/GeographyChart";
-// import BarChart from "../../components/BarChart";
-// import StatBox from "../../components/StatBox";
-// import ProgressCircle from "../../components/ProgressCircle";
+import { tokens } from "../../theme";
+import { data } from "../../data/data";
+import TotalAggStatBox from "../../components/TotalAggStatBox";
+import DailyStatBox from "../../components/DailyStatBox";
+import "react-datepicker/dist/react-datepicker.css";
+import { format } from "date-fns";
 
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  useEffect(() => {
+    setCurrentDate(new Date());
+  }, []);
 
   return (
     <Box m="20px">
-      {/* HEADER */}
+      <Header title="DASHBOARD" />
+
+      <Typography>Select today's date:</Typography>
+      <Header subtitle={`Today is ${currentDate.toLocaleDateString()}`} />
+
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
+        <Box
+          display="grid"
+          gridTemplateColumns="repeat(12, 1fr)"
+          gridAutoRows="140px"
+          gap="20px"
+        >
+          <DailyStatBox />
+          <TotalAggStatBox />
+        </Box>
       </Box>
     </Box>
   );

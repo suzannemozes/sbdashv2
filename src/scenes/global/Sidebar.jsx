@@ -26,18 +26,14 @@ import {
   TodayOutlined,
   CalendarMonthOutlined,
   CalendarTodayOutlined,
-  AdminPanelSettingsOutlined,
-  TrendingUpOutlined,
   PieChartOutlined,
   BarChartOutlined,
   VolunteerActivismOutlined,
-  TerrainOutlined,
   AttachMoneyOutlined,
   TimelineOutlined,
   MenuOutlined,
   MapOutlined,
 } from "@mui/icons-material";
-import profileImage from "../../assets/profile.jpeg";
 import Beshear from "../../assets/Beshear.png";
 import FlexBetween from "../../components/FlexBetween";
 
@@ -48,7 +44,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
     <MenuItem
       active={selected === title}
       style={{
-        color: colors.grey[100],
+        color: colors.greenAccent[400],
       }}
       onClick={() => setSelected(title)}
       icon={icon}
@@ -119,112 +115,111 @@ const Sidebar = () => {
               </Box>
             )}
           </MenuItem>
+<Divider />
+          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+            <FlexBetween />
+            <Item
+              title="Dashboard"
+              to="/"
+              icon={<HomeOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
 
-            <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-              <FlexBetween />
-              <Item
-                title="Dashboard"
-                to="/"
-                icon={<HomeOutlined />}
-                selected={selected}
-                setSelected={setSelected}
-              />
+            <Typography
+              variant="h5"
+              color={colors.grey[100]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
+              CONTRIBUTIONS
+            </Typography>
+            <Item
+              title="Donors"
+              to="/donors"
+              icon={<Groups2Outlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Donations"
+              to="/donations"
+              icon={<VolunteerActivismOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Transactions"
+              to="/transactions"
+              icon={<AttachMoneyOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
 
-              <Typography
-                variant="h6"
-                color={colors.grey[300]}
-                sx={{ m: "15px 0 5px 20px" }}
-              >
-                CONTRIBUTIONS
-              </Typography>
-              <Item
-                title="Donors"
-                to="/donors"
-                icon={<Groups2Outlined />}
-                selected={selected}
-                setSelected={setSelected}
-              />
-              <Item
-                title="Donations"
-                to="/donations"
-                icon={<VolunteerActivismOutlined />}
-                selected={selected}
-                setSelected={setSelected}
-              />
-              <Item
-                title="Transactions"
-                to="/transactions"
-                icon={<AttachMoneyOutlined />}
-                selected={selected}
-                setSelected={setSelected}
-              />
+            <Typography
+              variant="h5"
+              color={colors.grey[100]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
+              STATS
+            </Typography>
+            <Item
+              title="Daily"
+              to="/daily"
+              icon={<TodayOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Last 7 Days"
+              to="/weekly"
+              icon={<CalendarTodayOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Last 30 Days"
+              to="/monthly"
+              icon={<CalendarMonthOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
 
-              <Typography
-                variant="h6"
-                color={colors.grey[300]}
-                sx={{ m: "15px 0 5px 20px" }}
-              >
-                STATS
-              </Typography>
-              <Item
-                title="Daily"
-                to="/daily"
-                icon={<TodayOutlined />}
-                selected={selected}
-                setSelected={setSelected}
-              />
-              <Item
-                title="Last 7 Days"
-                to="/weekly"
-                icon={<CalendarTodayOutlined />}
-                selected={selected}
-                setSelected={setSelected}
-              />
-              <Item
-                title="Last 30 Days"
-                to="/monthly"
-                icon={<CalendarMonthOutlined />}
-                selected={selected}
-                setSelected={setSelected}
-              />
-
-              <Typography
-                variant="h6"
-                color={colors.grey[300]}
-                sx={{ m: "15px 0 5px 20px" }}
-              >
-                CHARTS
-              </Typography>
-              <Item
-                title="Bar Chart"
-                to="/bar"
-                icon={<BarChartOutlined />}
-                selected={selected}
-                setSelected={setSelected}
-              />
-              <Item
-                title="Pie Chart"
-                to="/pie"
-                icon={<PieChartOutlined />}
-                selected={selected}
-                setSelected={setSelected}
-              />
-              <Item
-                title="Line Chart"
-                to="/line"
-                icon={<TimelineOutlined />}
-                selected={selected}
-                setSelected={setSelected}
-              />
-              <Item
-                title="Geography Chart"
-                to="/geography"
-                icon={<MapOutlined />}
-                selected={selected}
-                setSelected={setSelected}
-              />
-            </Box>
-         
+            <Typography
+              variant="h5"
+              color={colors.grey[100]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
+              CHARTS
+            </Typography>
+            <Item
+              title="Bar Chart"
+              to="/bar"
+              icon={<BarChartOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Pie Chart"
+              to="/pie"
+              icon={<PieChartOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Line Chart"
+              to="/line"
+              icon={<TimelineOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Geography Chart"
+              to="/geography"
+              icon={<MapOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+          </Box>
         </Menu>
       </ProSidebar>
     </Box>

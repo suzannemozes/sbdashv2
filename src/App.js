@@ -6,11 +6,11 @@ import Navbar from "./scenes/global/Navbar";
 import Sidebar from "./scenes/global/Sidebar";
 // import Layout from "./scenes/layout";
 import Dashboard from "./scenes/dashboard";
-// import Donors from "./scenes/donors/index";
-// import Donations from "./scenes/donations/index";
-// import Transactions from "./scenes/transactions/index";
-// import Stats from "./scenes/stats/index";
-// import Daily from "./scenes/daily/index";
+import Donors from "./scenes/donors/Donors"
+import Donations from "./scenes/donations/Donations";
+import Transactions from "./scenes/transactions/Transactions.jsx";
+// import Stats from "./scenes/stats/Stats";
+import Daily from "./scenes/daily/Daily";
 // import Geo from "./scenes/geo/index";
 
 function App() {
@@ -27,12 +27,11 @@ function App() {
             <Navbar setIsSidebar={setIsSidebar} />
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-              {/* <Route path="/donors" element={<Donors />} /> */}
-              {/* <Route path="/donations" element={<Donations />} /> */}
-              {/* <Route path="/transactions" element={<Transactions />} /> */}
+              <Route path="/donors" element={<Donors />} />
+              <Route path="/donations" element={<Donations />} />
+              <Route path="/transactions" element={<Transactions />} />
               {/* <Route path="/stats" element={<Stats />} /> */}
-              {/* <Route path="/daily" element={<Daily />} /> */}
+              <Route path="/daily" element={<Daily />} />
               {/* <Route path="/geo" element={<Geo />} /> */}
             </Routes>
           </main>
