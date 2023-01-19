@@ -24,7 +24,6 @@ const Dashboard = () => {
 
       <Typography>Select today's date:</Typography>
       <Header subtitle={`Today is ${currentDate.toLocaleDateString()}`} />
-
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Box
           display="grid"
