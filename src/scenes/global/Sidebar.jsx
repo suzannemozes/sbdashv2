@@ -118,13 +118,13 @@ const Sidebar = () => {
 <Divider />
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <FlexBetween />
-            <Item
+            {/* <Item
               title="Dashboard"
               to="/"
               icon={<HomeOutlined />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
 
             <Typography
               variant="h5"

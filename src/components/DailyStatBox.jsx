@@ -1,11 +1,10 @@
 import React, { useState, useEffect, handleClick } from "react";
 import { data } from "../data/data";
 import StatBox from "../components/StatBox";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import { PointOfSaleOutlined } from "@mui/icons-material";
 import { format } from "date-fns";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const DailyStatBox = () => {
