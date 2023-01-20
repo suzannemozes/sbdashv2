@@ -3,24 +3,28 @@ import { data } from "../data/data";
 import StatBox from "../components/StatBox";
 import { Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { MoneyOutlined } from "@mui/icons-material";
+import { NextWeekOutlined } from "@mui/icons-material";
+import { format, parse, isBetween } from "date-fns";
 
-const TotalAggStatBox = () => {
+const WeeklyAggStatBox = () => {
   const [totalAmount, setTotalAmount] = useState(0);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   useEffect(() => {
-    let sum = 0;
-    data.forEach((item) => {
-       sum += item.amount;
+    const startDate = new Date("2021-09-23");
+    const endDate = new Date("2021-09-30");
+    const filteredData = data.filter((item) => {
+      const paidAtDate = new Date(item.paid_at);
+      return paidAtDate >= startDate && paidAtDate <= endDate;
     });
-    setTotalAmount(sum);
-  }, []);
 
-  const increase = () => {
-    
-  }
+    const totalAmount = filteredData.reduce(
+      (acc, curr) => acc + curr.amount,
+      0
+    );
+    setTotalAmount(totalAmount);
+  }, []);
 
   return (
     <Box
@@ -35,11 +39,11 @@ const TotalAggStatBox = () => {
           style: "currency",
           currency: "USD",
         }).format(totalAmount.toFixed(2))}
-        subtitle="All Time"
+        subtitle="Last Week"
         progress="0.75"
         increase="+14%"
         icon={
-          <MoneyOutlined
+          <NextWeekOutlined
             sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
           />
         }
@@ -48,4 +52,4 @@ const TotalAggStatBox = () => {
   );
 };
 
-export default TotalAggStatBox;
+export default WeeklyAggStatBox;

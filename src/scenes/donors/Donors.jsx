@@ -4,6 +4,8 @@ import Header from "../../components/Header";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { data } from "../../data/data.js";
+import { format } from "date-fns";
+import { red } from "@mui/material/colors";
 
 const Donors = () => {
   const theme = useTheme();
@@ -13,22 +15,26 @@ const Donors = () => {
     {
       field: "refcode",
       headerName: "RefCode",
-      flex: 0.5,
+      flex: 0.25,
     },
     {
       field: "paid_at",
       headerName: "Donation Date",
-      flex: 1,
+      flex: 0.5,
+      type: "string",
+      renderCell: (params) =>
+        format(new Date(params.row.paid_at), "MM/dd/yyyy"),
     },
     {
       field: "donor_firstname",
       headerName: "First",
-      flex: 0.5,
+      flex: 0.25,
+      
     },
     {
       field: "donor_lastname",
       headerName: "Last",
-      flex: 0.5,
+      flex: 0.15,
     },
     {
       field: "donor_phone",
@@ -74,7 +80,7 @@ const Donors = () => {
         }}
       >
         <DataGrid
-          // getRowId={(row) => row._id}
+          getRowId={(row) => row.id}
           initialState={{
             sorting: {
               sortModel: [

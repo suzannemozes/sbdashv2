@@ -1,3 +1,7 @@
+export const dataPie = [
+  
+]
+
 export const dataState = [
   {
     _id: "CT",

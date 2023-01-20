@@ -12,7 +12,7 @@ import Transactions from "./scenes/transactions/Transactions.jsx";
 import Bar from "./scenes/bar/index.jsx"
 import Pie from "./scenes/pie/index.jsx";
 // import Stats from "./scenes/stats/Stats";
-import Daily from "./scenes/daily/Daily";
+import DailyLineChart from "./scenes/daily/DailyLineChart";
 // import Geo from "./scenes/geo/index";
 
 function App() {
@@ -28,15 +28,13 @@ function App() {
           <main className="content">
             <Navbar setIsSidebar={setIsSidebar} />
             <Routes>
-              <Route path="/" element={<Dashboard />} />
+              {/* <Route path="/" element={<Dashboard />} /> */}
               <Route path="/donors" element={<Donors />} />
               <Route path="/donations" element={<Donations />} />
               <Route path="/transactions" element={<Transactions />} />
-              {/* <Route path="/stats" element={<Stats />} /> */}
-              <Route path="/daily" element={<Daily />} />
+              <Route path="/daily" element={<DailyLineChart />} />
               <Route path="/bar" element={<Bar />} />
               <Route path="/pie" element={<Pie />} />
-              {/* <Route path="/geo" element={<Geo />} /> */}
             </Routes>
           </main>
         </div>

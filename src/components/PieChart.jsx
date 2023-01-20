@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { ResponsivePie } from "@nivo/pie";
 import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
@@ -9,22 +8,25 @@ const PieChart = () => {
   const colors = tokens(theme.palette.mode);
   const states = data.map((item) => item.donor_state);
   const stateCounts = {};
-  states.forEach((donor_state) => {
-    if (!stateCounts[donor_state]) {
-      stateCounts[donor_state] = 1;
+  states.forEach((id) => {
+    if (!stateCounts[id]) {
+      stateCounts[id] = 1;
     } else {
-      stateCounts[donor_state] += 1;
+      stateCounts[id] += 1;
     }
   });
 
   const chartData = Object.keys(stateCounts).map((key) => ({
-    donor_state: key,
-    count: stateCounts[key],
+    id: key,
+    label: key,
+    value: stateCounts[key],
   }));
-
+  console.log("chartData", chartData);
   return (
     <ResponsivePie
       data={chartData}
+      enableLabel={false}
+      keys={["count"]}
       theme={{
         axis: {
           domain: {
@@ -66,7 +68,8 @@ const PieChart = () => {
       arcLinkLabelsTextColor={colors.grey[100]}
       arcLinkLabelsThickness={2}
       arcLinkLabelsColor={{ from: "color" }}
-      enableArcLabels={false}
+      arcLabel="id"
+      enableArcLabels={true}
       arcLabelsRadiusOffset={0.4}
       arcLabelsSkipAngle={7}
       arcLabelsTextColor={{
@@ -95,8 +98,8 @@ const PieChart = () => {
       ]}
       legends={[
         {
-          anchor: "bottom",
-          direction: "row",
+          anchor: "left",
+          direction: "column",
           justify: false,
           translateX: 0,
           translateY: 56,
@@ -112,7 +115,7 @@ const PieChart = () => {
             {
               on: "hover",
               style: {
-                itemTextColor: "#000",
+                itemOpacity: 1,
               },
             },
           ],

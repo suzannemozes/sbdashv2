@@ -5,6 +5,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { data } from "../../data/data";
 import DataGridCustomToolbar from "../../components/DataGridCustomToolbar";
+import { format, parse } from "date-fns";
 
 const Transactions = () => {
   const theme = useTheme();
@@ -25,8 +26,11 @@ const Transactions = () => {
     },
     {
       field: "paid_at",
-      headerName: "Time of Payment",
+      headerName: "Date of Payment",
       flex: 1,
+      type: "string",
+      renderCell: (params) =>
+        format(new Date(params.row.paid_at), "yyyy-MM-dd"),
     },
     {
       field: "amount",
@@ -34,7 +38,10 @@ const Transactions = () => {
       flex: 1,
       renderCell: (params) => (
         <Typography color={colors.greenAccent[500]}>
-          ${params.row.amount}
+          {new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+          }).format(params.row.amount.toFixed(2))}
         </Typography>
       ),
     },
